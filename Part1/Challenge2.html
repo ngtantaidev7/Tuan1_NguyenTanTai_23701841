@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BAI TAP JS TUAN 1</title>
+  </head>
+  <body>
+    <script>
+      // Khai báo thông tin của Mark
+      const massMark = 78;
+      const heightMark = 1.69;
+
+      // Khai báo thông tin của John
+      const massJohn = 92;
+      const heightJohn = 1.95;
+
+      // Tính BMI cuả 2 người
+      let BMIMark = massMark / (heightMark * heightMark);
+      let BMIJohn = massJohn / (heightJohn * heightJohn);
+
+      // In kết quả
+      console.log('BMI của Mark:', BMIMark);
+      console.log('BMI của John:', BMIJohn);
+
+      if (BMIMark > BMIJohn) {
+        console.log(
+          `Chỉ số BMI của Mark (${BMIMark}) cao hơn của John (${BMIJohn})!`,
+        );
+      } else {
+        console.log(
+          `Chỉ số BMI của John (${BMIJohn}) cao hơn của Mark (${BMIMark})!`,
+        );
+      }
+    </script>
+  </body>
+</html>
