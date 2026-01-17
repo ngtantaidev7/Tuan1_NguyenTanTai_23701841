@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coding Challenge #3</title>
+  </head>
+  <body>
+    <h1>Thử thách số 3: Tìm đội vô địch</h1>
+
+    <div>
+      <h3>Dolphins</h3>
+      <input type="number" id="d1" placeholder="Điểm 1" />
+      <input type="number" id="d2" placeholder="Điểm 2" />
+      <input type="number" id="d3" placeholder="Điểm 3" />
+    </div>
+
+    <div>
+      <h3>Đội Gấu Koala</h3>
+      <input type="number" id="k1" placeholder="Điểm 1" />
+      <input type="number" id="k2" placeholder="Điểm 2" />
+      <input type="number" id="k3" placeholder="Điểm 3" />
+    </div>
+
+    <br />
+    <button onclick="timDoiVoDich()">Xem Kết Quả</button>
+
+    <h2 id="result">Đang chờ kết quả...</h2>
+
+    <script>
+      function timDoiVoDich() {
+        const d1 = Number(document.getElementById('d1').value);
+        const d2 = Number(document.getElementById('d2').value);
+        const d3 = Number(document.getElementById('d3').value);
+
+        const k1 = Number(document.getElementById('k1').value);
+        const k2 = Number(document.getElementById('k2').value);
+        const k3 = Number(document.getElementById('k3').value);
+
+        const scoreDolphins = (d1 + d2 + d3) / 3;
+        const scoreKoalas = (k1 + k2 + k3) / 3;
+
+        console.log('Dolphins trung bình ', scoreDolphins);
+        console.log('Koalas trung bình:', scoreKoalas);
+
+        let msg = '';
+
+        if (scoreDolphins > scoreKoalas && scoreDolphins >= 100) {
+          msg = `Cá heo thắng! (${scoreDolphins} so với ${scoreKoalas})`;
+        } else if (scoreKoalas > scoreDolphins && scoreKoalas >= 100) {
+          msg = `Gấu Koala thắng! (${scoreKoalas} so với ${scoreDolphins})`;
+        } else if (
+          scoreDolphins === scoreKoalas &&
+          scoreDolphins >= 100 &&
+          scoreKoalas >= 100
+        ) {
+          msg = 'Hòa nhau! Cả hai đội đều giành cúp!';
+        } else {
+          msg = 'Không có đội nào giành cúp! (Do điểm thấp hơn 100)';
+        }
+
+        document.getElementById('result').innerText = msg;
+      }
+    </script>
+  </body>
+</html>
