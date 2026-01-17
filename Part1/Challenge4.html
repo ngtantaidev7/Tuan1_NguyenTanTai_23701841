@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tip Calculator - Challenge #4</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      input {
+        padding: 8px;
+        width: 100px;
+      }
+      button {
+        padding: 8px 15px;
+        cursor: pointer;
+        background: #007bff;
+        color: white;
+        border: none;
+      }
+      .result-box {
+        margin-top: 20px;
+        padding: 10px;
+        background: #f0f0f0;
+        border-left: 4px solid #333;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Máy Tính Tiền Boa</h1>
+    <p>Nhập giá trị hóa đơn</p>
+
+    <input type="number" id="billInput" placeholder="VD: 275" />
+    <button onclick="calculateTip()">Tính Toán</button>
+
+    <div id="result" class="result-box">Kết quả sẽ hiện ở đây...</div>
+
+    <script>
+      function calculateTip() {
+        const bill = Number(document.getElementById('billInput').value);
+
+        if (!bill) {
+          alert('Vui lòng nhập số tiền!');
+          return;
+        }
+
+        const tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+        const total = bill + tip;
+        const message = `Hóa đơn là ${bill}, tiền boa là ${tip}, và tổng giá trị là ${total}`;
+        console.log(message);
+
+        document.getElementById('result').innerText = message;
+      }
+    </script>
+  </body>
+</html>
