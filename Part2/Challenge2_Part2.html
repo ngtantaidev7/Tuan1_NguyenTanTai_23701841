@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phần 2 - Challenge #2: Tip Calculator</title>
+  </head>
+  <body>
+    <div class="input-group">
+      <label for="billValue">Nhập giá trị hóa đơn:</label>
+      <input type="number" id="billValue" placeholder="Ví dụ: 125" />
+      <button onclick="xuLyTinhToan()">Tính toán</button>
+    </div>
+
+    <div id="result">Kết quả sẽ hiển thị ở đây...</div>
+
+    <script>
+      const calcTip = function (bill) {
+        return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+      };
+
+      const bills = [];
+      const tips = [];
+      const totals = [];
+
+      function xuLyTinhToan() {
+        const billInput = document.getElementById('billValue').value;
+        const bill = Number(billInput);
+
+        const tip = calcTip(bill);
+        const total = bill + tip;
+
+        bills.push(bill);
+        tips.push(tip);
+        totals.push(total);
+
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = `
+                <p><strong>Hóa đơn:</strong> ${bill}</p>
+                <p><strong>Tiền boa:</strong> ${tip}</p>
+                <p><strong>Tổng cộng:</strong> ${total}</p>
+            `;
+
+        console.log('Bills Array:', bills);
+        console.log('Tips Array:', tips);
+        console.log('Totals Array:', totals);
+      }
+    </script>
+  </body>
+</html>
