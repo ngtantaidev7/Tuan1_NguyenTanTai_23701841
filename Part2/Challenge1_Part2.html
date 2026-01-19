@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 2</title>
+</head>
+<body>
+    <script>
+        const calcAverage = (a, b, c) => (a + b + c) / 3;
+
+        const checkWinner = function (avgDolphins, avgKoalas) {
+            if (avgDolphins >= 2 * avgKoalas) {
+                console.log(`Dolphins thắng (avg: ${avgDolphins} so với ${avgKoalas})`);
+            } else if (avgKoalas >= 2 * avgDolphins) {
+                console.log(`Koalas thắng (avg: ${avgKoalas} so với ${avgDolphins})`);
+            } else {
+                console.log("Không có đội nào thắng cuộc vì không đủ điều kiện điểm gấp đôi.");
+            }
+        };
+
+        console.log("--- KẾT QUẢ DỮ LIỆU 1 ---");
+        // Dolphins: 44, 23, 71 | Koalas: 65, 54, 49
+        let scoreDolphins = calcAverage(44, 23, 71);
+        let scoreKoalas = calcAverage(65, 54, 49);
+
+        console.log(`TB Dolphins: ${scoreDolphins} | TB Koalas: ${scoreKoalas}`);
+        checkWinner(scoreDolphins, scoreKoalas);
+
+        // --- KIỂM THỬ VỚI DỮ LIỆU 2 ---
+        console.log("\n--- KẾT QUẢ DỮ LIỆU 2 ---");
+        // Dolphins: 85, 54, 41 | Koalas: 23, 34, 27
+        scoreDolphins = calcAverage(85, 54, 41);
+        scoreKoalas = calcAverage(23, 34, 27);
+
+        console.log(`TB Dolphins: ${scoreDolphins} | TB Koalas: ${scoreKoalas}`);
+        checkWinner(scoreDolphins, scoreKoalas);
+    </script>
+</body>
+</html>
