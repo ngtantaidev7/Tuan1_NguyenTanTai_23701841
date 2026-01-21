@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Đoán Số Bí Mật!</title>
+  </head>
+  <body>
+    <header>
+      <button class="again">Chơi lại!</button>
+      <p>(Trong khoảng 1 đến 20)</p>
+      <h1>Đoán số của tôi!</h1>
+      <div class="number">?</div>
+    </header>
+
+    <main>
+      <section>
+        <input type="number" class="guess" />
+        <button class="check">Kiểm tra!</button>
+      </section>
+
+      <section>
+        <p class="message">Bắt đầu đoán...</p>
+        <p>Điểm: <span class="score">20</span></p>
+        <p>Điểm cao nhất: <span class="highscore">0</span></p>
+      </section>
+    </main>
+
+    <script>
+      let secretNumber = Math.trunc(Math.random() * 20) + 1;
+      let score = 20;
+      let highscore = 0;
+
+      const displayMessage = function (message) {
+        document.querySelector('.message').textContent = message;
+      };
+
+      document.querySelector('.check').addEventListener('click', function () {
+        const guess = Number(document.querySelector('.guess').value);
+
+        if (!guess) {
+          displayMessage('Không có số!');
+        } else if (guess === secretNumber) {
+          displayMessage('Chúc mừng! Bạn đoán đúng!');
+          document.querySelector('.number').textContent = secretNumber;
+
+          document.querySelector('body').style.backgroundColor = '#60b347';
+          document.querySelector('.number').style.width = '30rem';
+
+          if (score > highscore) {
+            highscore = score;
+            document.querySelector('.highscore').textContent = highscore;
+          }
+        } else if (guess !== secretNumber) {
+          if (score > 1) {
+            displayMessage(guess > secretNumber ? 'Quá cao!' : 'Quá thấp!');
+            score--;
+            document.querySelector('.score').textContent = score;
+          } else {
+            displayMessage('Bạn đã thua cuộc!');
+            document.querySelector('.score').textContent = 0;
+          }
+        }
+      });
+
+      document.querySelector('.again').addEventListener('click', function () {
+        score = 20;
+        secretNumber = Math.trunc(Math.random() * 20) + 1;
+
+        displayMessage('Bắt đầu đoán...');
+        document.querySelector('.score').textContent = score;
+        document.querySelector('.number').textContent = '?';
+        document.querySelector('.guess').value = '';
+
+        document.querySelector('body').style.backgroundColor = '#222';
+        document.querySelector('.number').style.width = '15rem';
+      });
+    </script>
+  </body>
+</html>
