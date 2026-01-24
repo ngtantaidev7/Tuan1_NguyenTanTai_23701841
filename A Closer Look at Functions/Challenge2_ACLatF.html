@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Functions - Challenge #2 (Closures)</title>
+  </head>
+  <body>
+    <h1>Thử thách về Closures</h1>
+    <script>
+      (function () {
+        const header = document.querySelector('h1');
+        header.style.color = 'red';
+        console.log('Trạng thái ban đầu: Màu đỏ');
+
+        document.querySelector('body').addEventListener('click', function () {
+          header.style.color = 'blue';
+          console.log('Đã đổi màu tiêu đề sang blue !');
+        });
+      })();
+    </script>
+  </body>
+</html>
