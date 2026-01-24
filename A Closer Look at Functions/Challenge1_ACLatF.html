@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Poll App - Challenge #1</title>
+  </head>
+  <body>
+    <button class="poll-btn">Trả lời bình chọn (Answer poll)</button>
+    <script>
+      const poll = {
+        question: 'Ngôn ngữ lập trình yêu thích của bạn là gì?',
+        options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+        answers: new Array(4).fill(0),
+
+        registerNewAnswer() {
+          const input = Number(
+            prompt(
+              `${this.question}\n${this.options.join('\n')}\n(Nhập số của phương án)`,
+            ),
+          );
+
+          if (
+            typeof input === 'number' &&
+            input >= 0 &&
+            input < this.answers.length
+          ) {
+            this.answers[input]++;
+          } else {
+            alert('Lựa chọn không hợp lệ! Vui lòng nhập số từ 0 đến 3.');
+          }
+
+          this.displayResults();
+          this.displayResults('string');
+        },
+
+        displayResults(type = 'array') {
+          if (type === 'array') {
+            console.log(this.answers);
+          } else if (type === 'string') {
+            console.log(`Kết quả bình chọn là: ${this.answers.join(', ')}`);
+          }
+        },
+      };
+
+      document
+        .querySelector('.poll-btn')
+        .addEventListener('click', poll.registerNewAnswer.bind(poll));
+    </script>
+  </body>
+</html>
