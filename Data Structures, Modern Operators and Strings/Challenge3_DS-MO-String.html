@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Football Betting - Challenge 3</title>
+  </head>
+  <body>
+    <script>
+      const gameEvents = new Map([
+        [17, '⚽ GOAL'],
+        [36, '🔁 Substitution'],
+        [47, '⚽ GOAL'],
+        [61, '🔁 Substitution'],
+        [64, '🔶 Yellow card'],
+        [69, '🔴 Red card'],
+        [70, '🔁 Substitution'],
+        [72, '🔁 Substitution'],
+        [76, '⚽ GOAL'],
+        [80, '⚽ GOAL'],
+        [92, '🔶 Yellow card'],
+      ]);
+
+      const events = [...new Set(gameEvents.values())];
+      console.log('Các loại sự kiện trong trận đấu');
+      console.log(events);
+
+      gameEvents.delete(64);
+      console.log('\nĐã cập nhật lại nhật ký (xóa phút 64)');
+
+      const time = [...gameEvents.keys()].pop();
+      console.log(
+        `Trung bình có một sự kiện xảy ra sau mỗi ${90 / gameEvents.size} phút`,
+      );
+      console.log(
+        `(Tính theo ${time} phút: Trung bình mỗi ${time / gameEvents.size} phút)`,
+      );
+
+      console.log('\nNhật ký chi tiết trận đấu');
+      for (const [min, event] of gameEvents) {
+        const half = min <= 45 ? 'FIRST HALF' : 'SECOND HALF';
+        console.log(`[${half}] ${min}: ${event}`);
+      }
+    </script>
+  </body>
+</html>
